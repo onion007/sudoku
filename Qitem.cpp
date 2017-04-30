@@ -17,6 +17,7 @@ class Qitem
         Point *tbd[81];
         int   tbdc = 0;
         int   total = 0;
+        list<string *> result;
 
         Qitem(int);
         void bset(int,int,int);
@@ -28,11 +29,40 @@ class Qitem
         void showRule();
         void showTBD();
         void saveResult();
+        void showResult();
 };
+
+void Qitem::showResult()
+{
+    list<string *>::iterator iter;
+    string *s = NULL;
+    for(iter = result.begin(); iter != result.end();)
+    {
+        list<string *>::iterator t = iter++;
+        s = *t;
+        cout << *s;
+    }
+}
 
 void Qitem::saveResult()
 {
-    //showBoard();
+    char s[20];
+    sprintf(s, "[%d,%d]\n", tag, total+1);
+    result.push_back(new string(s));
+    for(int i=0;i<9;i++)
+    {
+        sprintf(s, "%d,%d,%d,%d,%d,%d,%d,%d,%d\n",
+                board[i][0]->value,
+                board[i][1]->value,
+                board[i][2]->value,
+                board[i][3]->value,
+                board[i][4]->value,
+                board[i][5]->value,
+                board[i][6]->value,
+                board[i][7]->value,
+                board[i][8]->value);
+        result.push_back(new string(s));
+    }
     total++;
 }
 
@@ -156,7 +186,7 @@ void Qitem::showBoard()
 }
 
 void Qitem::run(){
-    showBoard();
+    //showBoard();
     hch1(0);
-    cout << "total=" << total << endl;
+    //cout << "total=" << total << endl;
 }

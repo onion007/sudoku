@@ -77,4 +77,12 @@ void Qizz::Run()
 
 int Qizz::Submit(const char *outputFile)
 {
+    list<Qitem *>::iterator iter;
+    Qitem *q = NULL;
+    for(iter = qlist.begin(); iter != qlist.end();)
+    {
+        list<Qitem *>::iterator t = iter++;
+        q = *t;
+        q->showResult();
+    }
 }

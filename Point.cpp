@@ -18,8 +18,6 @@ class Point
         Point(int,int,int);
         void setValue(int);
         int  getValue();
-        int  comput();
-        int  check(int);
 };
 
 Point::Point(int x, int y, int v)
