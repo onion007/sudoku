@@ -31,7 +31,6 @@ class Qitem
         void saveResult();
         void showResult();
         void flushResult(FILE *);
-        //void flushResult(fstream);
 };
 
 void Qitem::showResult()
@@ -46,7 +45,6 @@ void Qitem::showResult()
     }
 }
 
-//void Qitem::flushResult(fstream fin)
 void Qitem::flushResult(FILE *fp)
 {
     list<string *>::iterator iter;
