@@ -45,11 +45,6 @@ int main(int argc, char *argv[])
         usage();
     }
 
-    /*
-    cout << "inputfile=[" << inputFile << "]" << endl;
-    cout << "outputfile=[" << outputFile << "]" << endl;
-    */
-
     Qizz q(inputFile);
     q.Run();
     q.Submit(outputFile);

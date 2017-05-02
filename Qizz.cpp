@@ -26,10 +26,8 @@ Qizz::Qizz(const char *inputFile)
     int t[9];
     while( getline(fin, s) )
     {
-        //cout << s << endl;
         if( sscanf(s.c_str(), "[%d]", &tag) )
         {
-            //cout << tag << endl;
             if( q != NULL )
             {
                 // add q into Queue
@@ -77,12 +75,15 @@ void Qizz::Run()
 
 int Qizz::Submit(const char *outputFile)
 {
+    FILE *fp;
+    fp = fopen(outputFile, "w");
     list<Qitem *>::iterator iter;
     Qitem *q = NULL;
     for(iter = qlist.begin(); iter != qlist.end();)
     {
         list<Qitem *>::iterator t = iter++;
         q = *t;
-        q->showResult();
+        q->flushResult(fp);
     }
+    fclose(fp);
 }

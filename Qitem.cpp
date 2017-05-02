@@ -30,6 +30,8 @@ class Qitem
         void showTBD();
         void saveResult();
         void showResult();
+        void flushResult(FILE *);
+        //void flushResult(fstream);
 };
 
 void Qitem::showResult()
@@ -41,6 +43,20 @@ void Qitem::showResult()
         list<string *>::iterator t = iter++;
         s = *t;
         cout << *s;
+    }
+}
+
+//void Qitem::flushResult(fstream fin)
+void Qitem::flushResult(FILE *fp)
+{
+    list<string *>::iterator iter;
+    string *s = NULL;
+    for(iter = result.begin(); iter != result.end();)
+    {
+        list<string *>::iterator t = iter++;
+        s = *t;
+        //cout << *s;
+        fprintf(fp, "%s", s->c_str());
     }
 }
 
