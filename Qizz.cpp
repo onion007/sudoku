@@ -31,6 +31,10 @@ Qizz::Qizz(const char *inputFile)
             if( q != NULL )
             {
                 // add q into Queue
+                if(i!=9)
+                {
+                    q->ok = 0;
+                }
                 qlist.push_back(q);
             }
             q = new Qitem(tag);
@@ -44,7 +48,7 @@ Qizz::Qizz(const char *inputFile)
                                         &t[5],
                                         &t[6],
                                         &t[7],
-                                        &t[8]))
+                                        &t[8]) )
         {
             q->bset(i, 0, t[0]);
             q->bset(i, 1, t[1]);
@@ -57,6 +61,10 @@ Qizz::Qizz(const char *inputFile)
             q->bset(i, 8, t[8]);
             i++;
         }
+    }
+    if(i!=9)
+    {
+        q->ok = 0;
     }
     qlist.push_back(q);
 }

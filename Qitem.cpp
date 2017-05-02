@@ -10,6 +10,7 @@ class Qitem
 {
     public:
         int   tag;
+        int   ok=1;
         Point *board[9][9];
         int   rx[9][10];
         int   ry[9][10];
@@ -47,14 +48,28 @@ void Qitem::showResult()
 
 void Qitem::flushResult(FILE *fp)
 {
-    list<string *>::iterator iter;
-    string *s = NULL;
-    for(iter = result.begin(); iter != result.end();)
+    if(0 == total)
     {
-        list<string *>::iterator t = iter++;
-        s = *t;
-        //cout << *s;
-        fprintf(fp, "%s", s->c_str());
+        //cout << "no result" << endl;
+        fprintf(fp, "[%d,0]\n", tag);
+        /*
+        for(int i=0;i<9;i++)
+        {
+            fprintf(fp, "0,0,0,0,0,0,0,0,0\n");
+        }
+        */
+    }
+    else
+    {
+        list<string *>::iterator iter;
+        string *s = NULL;
+        for(iter = result.begin(); iter != result.end();)
+        {
+            list<string *>::iterator t = iter++;
+            s = *t;
+            //cout << *s;
+            fprintf(fp, "%s", s->c_str());
+        }
     }
 }
 
@@ -201,6 +216,9 @@ void Qitem::showBoard()
 
 void Qitem::run(){
     //showBoard();
-    hch1(0);
+    if(ok==1)
+    {
+        hch1(0);
+    }
     //cout << "total=" << total << endl;
 }
