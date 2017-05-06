@@ -40,7 +40,7 @@ Qizz::Qizz(const char *inputFile)
             q = new Qitem(tag);
             i = 0;
         }
-        if( sscanf(s.c_str(), YGFORMAT, &t[0],
+        if( 9 == sscanf(s.c_str(), YGFORMAT, &t[0],
                                         &t[1],
                                         &t[2],
                                         &t[3],

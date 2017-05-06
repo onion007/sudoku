@@ -48,16 +48,13 @@ void Qitem::showResult()
 
 void Qitem::flushResult(FILE *fp)
 {
-    if(0 == total)
+    if(0 == ok)
     {
-        //cout << "no result" << endl;
+        fprintf(fp, "[%d,-1]\n", tag);
+    }
+    else if(0 == total)
+    {
         fprintf(fp, "[%d,0]\n", tag);
-        /*
-        for(int i=0;i<9;i++)
-        {
-            fprintf(fp, "0,0,0,0,0,0,0,0,0\n");
-        }
-        */
     }
     else
     {
@@ -67,7 +64,6 @@ void Qitem::flushResult(FILE *fp)
         {
             list<string *>::iterator t = iter++;
             s = *t;
-            //cout << *s;
             fprintf(fp, "%s", s->c_str());
         }
     }
